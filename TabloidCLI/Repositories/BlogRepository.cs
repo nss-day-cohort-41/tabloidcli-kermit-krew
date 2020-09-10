@@ -52,7 +52,7 @@ namespace TabloidCLI.Repositories
                 {
                     cmd.CommandText = @"SELECT b.Id AS BlogId,
                                                b.Title,
-                                               a.Url,
+                                               b.Url,
                                                t.Id AS TagId,
                                                t.Name
                                           FROM Blog b 

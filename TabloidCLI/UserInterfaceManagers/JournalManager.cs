@@ -70,7 +70,7 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             if (prompt == null)
             {
-                prompt = "Please choose an Journal:";
+                prompt = "Please choose a Journal Entry:";
             }
 
             Console.WriteLine(prompt);

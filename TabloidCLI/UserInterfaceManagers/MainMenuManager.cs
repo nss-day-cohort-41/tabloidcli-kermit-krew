@@ -6,7 +6,7 @@ namespace TabloidCLI.UserInterfaceManagers
     public class MainMenuManager : IUserInterfaceManager
     {
         private const string CONNECTION_STRING = 
-            @"Data Source=localhost\SQLEXPRESS06;Database=TabloidCLI;Integrated Security=True";
+            @"Data Source=localhost\SQLEXPRESS;Database=TabloidCLI;Integrated Security=True";
 
         public IUserInterfaceManager Execute()
         {
@@ -34,6 +34,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 case "0":
                     Console.WriteLine("Good bye");
                     return null;
+                case "c": return new ColorManager(this);
                 default:
                     Console.WriteLine("Invalid Selection");
                     return this;

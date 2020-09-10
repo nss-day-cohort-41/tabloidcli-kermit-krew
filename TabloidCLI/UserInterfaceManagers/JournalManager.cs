@@ -22,10 +22,9 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             Console.WriteLine("Journal Menu");
             Console.WriteLine(" 1) List Journal Entries");
-            Console.WriteLine(" 2) Journal Entry Details");
-            Console.WriteLine(" 3) Add Journal Entry");
-            Console.WriteLine(" 4) Edit Journal Entry");
-            Console.WriteLine(" 5) Remove Journal Entry");
+            Console.WriteLine(" 2) Add Journal Entry");
+            Console.WriteLine(" 3) Edit Journal Entry");
+            Console.WriteLine(" 4) Remove Journal Entry");
             Console.WriteLine(" 0) Go Back");
 
             Console.Write("> ");
@@ -36,24 +35,12 @@ namespace TabloidCLI.UserInterfaceManagers
                     List();
                     return this;
                 case "2":
-                    Journal journal = Choose();
-                    if (journal == null)
-                    {
-                        return this;
-                    }
-                    else
-                    {
-                        throw new NotImplementedException();
-                        // Command below to be implemented later
-                        // return new JournalDetailManager(this, _connectionString, journal.Id);
-                    }
-                case "3":
                     Add();
                     return this;
-                case "4":
+                case "3":
                     Edit();
                     return this;
-                case "5":
+                case "4":
                     Remove();
                     return this;
                 case "0":
@@ -69,9 +56,13 @@ namespace TabloidCLI.UserInterfaceManagers
         private void List()
         {
             List<Journal> journals = _journalRepository.GetAll();
+            Console.WriteLine("\n-----\n");
             foreach (Journal journal in journals)
             {
-                Console.WriteLine(journal);
+                Console.WriteLine(journal.CreateDateTime);
+                Console.WriteLine(journal.Title);
+                Console.WriteLine(journal.Content);
+                Console.WriteLine("\n-----\n");
             }
         }
 
@@ -117,7 +108,6 @@ namespace TabloidCLI.UserInterfaceManagers
             Console.Write("Entry: ");
             journal.Content = Console.ReadLine();
 
-            // Set creation date/time to current upon entry completion
             journal.CreateDateTime = DateTime.Now;
 
             _journalRepository.Insert(journal);
@@ -143,12 +133,6 @@ namespace TabloidCLI.UserInterfaceManagers
             if (!string.IsNullOrWhiteSpace(content))
             {
                 journalToEdit.Content = content;
-            }
-            Console.Write("Update creation date to current date? 'Y' to update: ");
-            string updateDate = Console.ReadLine();
-            if (updateDate.ToUpper() == "Y" || updateDate.ToUpper() == "Y")
-            {
-                journalToEdit.CreateDateTime = DateTime.Now;
             }
 
             _journalRepository.Update(journalToEdit);

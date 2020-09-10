@@ -49,59 +49,8 @@ namespace TabloidCLI
         
         public Journal Get(int id)
         {
-            using (SqlConnection conn = Connection)
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    /* Below commands to be updated later
-                    cmd.CommandText = @"SELECT a.Id AS JournalId,
-                                               a.FirstName,
-                                               a.LastName,
-                                               a.Bio,
-                                               t.Id AS TagId,
-                                               t.Name
-                                          FROM Journal a 
-                                               LEFT JOIN JournalTag at on a.Id = at.JournalId
-                                               LEFT JOIN Tag t on t.Id = at.TagId
-                                         WHERE a.id = @id";
-
-                    cmd.Parameters.AddWithValue("@id", id);
-
-                    Journal journal = null;
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        if (journal == null)
-                        {
-                            journal = new Journal()
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("JournalId")),
-                                FirstName = reader.GetString(reader.GetOrdinal("FirstName")),
-                                LastName = reader.GetString(reader.GetOrdinal("LastName")),
-                                Bio = reader.GetString(reader.GetOrdinal("Bio")),
-                            };
-                        }
-
-                        if (!reader.IsDBNull(reader.GetOrdinal("TagId")))
-                        {
-                            author.Tags.Add(new Tag()
-                            {
-                                Id = reader.GetInt32(reader.GetOrdinal("TagId")),
-                                Name = reader.GetString(reader.GetOrdinal("Name")),
-                            });
-                        }
-                    }
-
-                    reader.Close();
-
-                    return author;
-                    */
-                    // Delete the below line when above code has been implemented
-                    return null;
-                }
-            }
+            // This method is required for IRepository interface, but is not needed in the course of the program
+            return null;
         }
         
         public void Insert(Journal journal)

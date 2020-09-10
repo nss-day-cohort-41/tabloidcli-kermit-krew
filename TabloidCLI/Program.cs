@@ -1,5 +1,5 @@
 ﻿using TabloidCLI.UserInterfaceManagers;
-
+using System;
 namespace TabloidCLI
 {
     class Program
@@ -8,6 +8,8 @@ namespace TabloidCLI
         {
             // MainMenuManager implements the IUserInterfaceManager interface
             IUserInterfaceManager ui = new MainMenuManager();
+         
+            Console.WriteLine("Welcome");
             while (ui != null)
             {
                 // Each call to Execute will return the next IUserInterfaceManager we should execute

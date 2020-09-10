@@ -73,7 +73,7 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             List<Post> posts = _postRepository.GetByBlog(_blogId);
             Console.WriteLine("------------- Blog Post -------------------");
-            Console.WriteLine($"Title\tURL\tPublished\tAuthor Name");
+            
             foreach (Post post in posts)
             {
                 Console.WriteLine($"{post.Title}\t{post.Url}\t{post.PublishDateTime.ToShortDateString()}\t{post.Author.FirstName} {post.Author.LastName}");

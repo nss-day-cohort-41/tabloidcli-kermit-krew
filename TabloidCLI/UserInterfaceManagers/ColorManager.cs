@@ -15,41 +15,40 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             Console.Clear();
             Console.WriteLine("Color Menu");
+            Console.WriteLine($"Current color is {Console.BackgroundColor}");
             Console.WriteLine("Choose a new background color from below:");
 
-            // Create an array of all available color options, then render as a menu
-            ConsoleColor[] colors = (ConsoleColor[]) ConsoleColor.GetValues(typeof(ConsoleColor));
-            for (int i = 0; i < colors.Length; i++ )
-            {
-                Console.WriteLine($" {i + 1}) {colors[i]}");
-            }
-            // Add a "0" option to exit this menu
-            Console.WriteLine(" 0) Go Back");
+            Console.WriteLine(" 1) Black");
+            Console.WriteLine(" 2) Blue");
+            Console.WriteLine(" 3) Red");
+            Console.WriteLine(" 4) Green");
+            Console.WriteLine(" 5) Yellow");
+            Console.WriteLine(" 0) Exit");
 
-            string input = Console.ReadLine();
-
-            try
+            Console.Write("> ");
+            string choice = Console.ReadLine();
+            switch (choice)
             {
-                int choice = int.Parse(input);
-                if (choice == 0)
-                    return _parentUI;
-                if (colors[choice - 1] == Console.ForegroundColor)
-                {
-                    // The user is about to make text invisible! Warn the user.
-                    Console.WriteLine("This is the same as the text color, and is not recommended!");
-                    Console.Write("Are you sure? > ");
-                    string confirmation = Console.ReadLine();
-                    if (confirmation.ToLower() != "y" && confirmation.ToLower() != "yes")
-                        return this;
-                }   
-                Console.BackgroundColor = colors[choice - 1];
+                case "1":
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    return this;
+                case "2":
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    return this;
+                case "3":
+                    Console.BackgroundColor = ConsoleColor.DarkRed;
+                    return this;
+                case "4":
+                    Console.BackgroundColor = ConsoleColor.DarkGreen;
+                    return this;
+                case "5":
+                    Console.BackgroundColor = ConsoleColor.DarkYellow;
+                    return this;
+                case "0": return _parentUI;
+                default:
+                    Console.WriteLine("Invalid Selection");
+                    return this;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Invalid Selection");
-            }
-
-            return this;
         }
     }
 }

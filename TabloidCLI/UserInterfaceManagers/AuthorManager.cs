@@ -55,6 +55,7 @@ namespace TabloidCLI.UserInterfaceManagers
                     Remove();
                     return this;
                 case "0":
+                    Console.Clear();
                     return _parentUI;
                 default:
                     Console.WriteLine("Invalid Selection");
@@ -109,20 +110,23 @@ namespace TabloidCLI.UserInterfaceManagers
 
             do
             { 
-            Console.Write("First Name: ");
-            author.FirstName = Console.ReadLine();
+                Console.Write("New Author First Name: ");
+                author.FirstName = Console.ReadLine();
+                Console.Clear();
             } while (author.FirstName == "");
 
             do
             {
-                Console.Write("Last Name: ");
+                Console.Write("New Author Last Name: ");
                 author.LastName = Console.ReadLine();
+                Console.Clear();
             } while (author.LastName == "");
 
             do
             {
-                Console.Write("Bio: ");
+                Console.Write("New Author Bio: ");
                 author.Bio = Console.ReadLine();
+                Console.Clear();
             } while (author.Bio == "");
 
             _authorRepository.Insert(author);
@@ -137,19 +141,19 @@ namespace TabloidCLI.UserInterfaceManagers
             }
 
             Console.WriteLine();
-            Console.Write("New first name (blank to leave unchanged: ");
+            Console.Write("New first name (blank to leave unchanged): ");
             string firstName = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(firstName))
             {
                 authorToEdit.FirstName = firstName;
             }
-            Console.Write("New last name (blank to leave unchanged: ");
+            Console.Write("New last name (blank to leave unchanged): ");
             string lastName = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(lastName))
             {
                 authorToEdit.LastName = lastName;
             }
-            Console.Write("New bio (blank to leave unchanged: ");
+            Console.Write("New bio (blank to leave unchanged): ");
             string bio = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(bio))
             {

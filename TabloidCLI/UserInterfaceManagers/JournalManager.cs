@@ -102,12 +102,17 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             Console.WriteLine("New Journal Entry");
             Journal journal = new Journal();
+            do
+            {
+                Console.Write("Title: ");
+                journal.Title = Console.ReadLine();
+            } while (journal.Title == "");
 
-            Console.Write("Title: ");
-            journal.Title = Console.ReadLine();
-
-            Console.Write("Entry: ");
-            journal.Content = Console.ReadLine();
+            do
+            {
+                Console.Write("Entry: ");
+                journal.Content = Console.ReadLine();
+            } while (journal.Content == "");
 
             journal.CreateDateTime = DateTime.Now;
 

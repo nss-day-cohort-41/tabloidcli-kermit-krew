@@ -104,17 +104,26 @@ namespace TabloidCLI.UserInterfaceManagers
 
         private void Add()
         {
-            Console.WriteLine("New Author");
-            Author author = new Author();
+                Console.WriteLine("New Author");
+                Author author = new Author();
 
+            do
+            { 
             Console.Write("First Name: ");
             author.FirstName = Console.ReadLine();
+            } while (author.FirstName == "");
 
-            Console.Write("Last Name: ");
-            author.LastName = Console.ReadLine();
+            do
+            {
+                Console.Write("Last Name: ");
+                author.LastName = Console.ReadLine();
+            } while (author.LastName == "");
 
-            Console.Write("Bio: ");
-            author.Bio = Console.ReadLine();
+            do
+            {
+                Console.Write("Bio: ");
+                author.Bio = Console.ReadLine();
+            } while (author.Bio == "");
 
             _authorRepository.Insert(author);
         }

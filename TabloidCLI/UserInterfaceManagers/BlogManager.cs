@@ -110,16 +110,20 @@ namespace TabloidCLI.UserInterfaceManagers
     {
         Console.WriteLine("New Blog");
         Blog blog = new Blog();
-
-        Console.Write("Title: ");
-        blog.Title = Console.ReadLine();
-
-        Console.Write("Url: ");
-        blog.Url = Console.ReadLine();
-
-        Console.Write("Tags: ");
-            blog.Tags = new List<Tag>();
         
+        do
+        { 
+            Console.Write("Title: ");
+            blog.Title = Console.ReadLine();
+        } while (blog.Title == "");
+
+         do
+         {
+            Console.Write("Url: ");
+            blog.Url = Console.ReadLine();
+         } while (blog.Url == "");
+
+        blog.Tags = new List<Tag>();
 
         _blogRepository.Insert(blog);
     }

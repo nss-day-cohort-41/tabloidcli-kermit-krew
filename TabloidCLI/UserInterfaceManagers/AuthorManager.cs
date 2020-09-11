@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TabloidCLI.Models;
+using TabloidCLI.Repositories;
 
 namespace TabloidCLI.UserInterfaceManagers
 {
@@ -8,13 +9,19 @@ namespace TabloidCLI.UserInterfaceManagers
     {
         private readonly IUserInterfaceManager _parentUI;
         private AuthorRepository _authorRepository;
+        private PostRepository _postRepository;
+        private BlogRepository _blogRepostory;
         private string _connectionString;
 
         public AuthorManager(IUserInterfaceManager parentUI, string connectionString)
         {
             _parentUI = parentUI;
             _authorRepository = new AuthorRepository(connectionString);
+            _postRepository = new PostRepository(connectionString);
+            _blogRepostory = new BlogRepository(connectionString);
             _connectionString = connectionString;
+            
+            
         }
 
         public IUserInterfaceManager Execute()
@@ -168,7 +175,29 @@ namespace TabloidCLI.UserInterfaceManagers
             Author authorToDelete = Choose("Which author would you like to remove?");
             if (authorToDelete != null)
             {
-                _authorRepository.Delete(authorToDelete.Id);
+               try
+                {
+                    _authorRepository.Delete(authorToDelete.Id);
+                }
+                catch (Microsoft.Data.SqlClient.SqlException exception)
+                {
+                    Console.WriteLine("It appears the author has Posts in TabloidCLI.");
+                    Console.WriteLine("Would you like to remove the Posts and Author? (Y to delete all, ENTER to return to the menu): ");
+                    string response = Console.ReadLine().ToLower();
+                    if (response == "y")
+                    {
+                        List<Post> posts = _postRepository.GetByAuthor(authorToDelete.Id);
+                        foreach (Post post in posts)
+                        {
+                            _blogRepostory.Delete(post.Blog.Id);
+                        };
+                       _authorRepository.Delete(authorToDelete.Id);
+                        Console.Clear();
+
+                    }
+                    
+                }
+                
             }
         }
     }

@@ -147,7 +147,7 @@ namespace TabloidCLI.UserInterfaceManagers
             bool checkDate = false;
             do
             {   
-                Console.Write("New Date: YYYY/MM/DD");
+                Console.Write("New Date: YYYY/MM/DD ");
                 string pubDate = Console.ReadLine();
                 DateTime dateTime;
                 if(string.IsNullOrWhiteSpace(pubDate))
@@ -244,7 +244,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Invalid Selection");
+                
                 return null;
             }
         }
@@ -274,7 +274,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Invalid Selection");
+                
                 return null;
             }
         }

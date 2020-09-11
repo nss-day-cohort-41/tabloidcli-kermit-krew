@@ -163,13 +163,13 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             while (checkDate == false);
             
-            Console.Write("New Title: ");
+            Console.Write("New Title (blank to leave unchanged): ");
             Author author = ChooseAuthor();
             if (author != null)
             {
                 postToEdit.Author = author;
             }
-            Console.Write("New Url (blank to leave unchanged: ");
+            Console.Write("New Url (blank to leave unchanged): ");
             Blog blog = ChooseBlog();
             if (blog != null)
             {

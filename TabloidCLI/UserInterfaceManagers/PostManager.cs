@@ -130,13 +130,13 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             //title,url,pubdate,author,blog
             Console.WriteLine();
-            Console.Write("New Title: ");
+            Console.Write("New Title (blank to leave unchanged) ");
             string title = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(title))
             {
                 postToEdit.Title = title;
             }
-            Console.Write("New Url: ");
+            Console.Write("New Url (blank to leave unchanged) ");
             string url = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(url))
             {
@@ -147,7 +147,7 @@ namespace TabloidCLI.UserInterfaceManagers
             bool checkDate = false;
             do
             {   
-                Console.Write("New Date: YYYY/MM/DD ");
+                Console.Write("New Date (blank to leave unchanged) YYYY/MM/DD ");
                 string pubDate = Console.ReadLine();
                 DateTime dateTime;
                 if(string.IsNullOrWhiteSpace(pubDate))
@@ -163,13 +163,13 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             while (checkDate == false);
             
-            Console.Write("New Title (blank to leave unchanged): ");
+            Console.Write("New Author (blank to leave unchanged) ");
             Author author = ChooseAuthor();
             if (author != null)
             {
                 postToEdit.Author = author;
             }
-            Console.Write("New Url (blank to leave unchanged): ");
+            Console.Write("New Blog (blank to leave unchanged) ");
             Blog blog = ChooseBlog();
             if (blog != null)
             {

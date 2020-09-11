@@ -29,6 +29,7 @@ namespace TabloidCLI.UserInterfaceManagers
 
             Console.Write("> ");
             string choice = Console.ReadLine();
+            Console.Clear();
             switch (choice)
             {
                 case "1":
@@ -70,7 +71,7 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             if (prompt == null)
             {
-                prompt = "Please choose an Journal:";
+                prompt = "Please choose a Journal Entry:";
             }
 
             Console.WriteLine(prompt);

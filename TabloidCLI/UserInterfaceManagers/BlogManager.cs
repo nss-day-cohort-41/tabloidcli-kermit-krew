@@ -33,6 +33,7 @@ namespace TabloidCLI.UserInterfaceManagers
 
         Console.Write("> ");
         string choice = Console.ReadLine();
+        Console.Clear();
         switch (choice)
         {
             case "1":

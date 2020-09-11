@@ -23,7 +23,7 @@ namespace TabloidCLI.UserInterfaceManagers
             Console.WriteLine(" 3) Red");
             Console.WriteLine(" 4) Green");
             Console.WriteLine(" 5) Yellow");
-            Console.WriteLine(" 0) Exit");
+            Console.WriteLine(" 0) Return to Main Menu");
 
             Console.Write("> ");
             string choice = Console.ReadLine();

@@ -24,6 +24,7 @@ namespace TabloidCLI.UserInterfaceManagers
 
             Console.Write("> ");
             string choice = Console.ReadLine();
+            Console.Clear();
             switch (choice)
             {
                 case "1": return new JournalManager(this, CONNECTION_STRING);
@@ -34,6 +35,8 @@ namespace TabloidCLI.UserInterfaceManagers
                 case "6": return new SearchManager(this, CONNECTION_STRING);
                 case "7": return new ColorManager(this);
                 case "0":
+                    Console.ResetColor();
+                    Console.Clear();
                     Console.WriteLine("Good bye");
                     return null;
                 default:

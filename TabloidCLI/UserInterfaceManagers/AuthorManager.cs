@@ -192,6 +192,7 @@ namespace TabloidCLI.UserInterfaceManagers
                             _blogRepostory.Delete(post.Blog.Id);
                         };
                        _authorRepository.Delete(authorToDelete.Id);
+                        Console.Clear();
 
                     }
                     

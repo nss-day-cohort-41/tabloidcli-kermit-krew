@@ -61,7 +61,7 @@ namespace TabloidCLI.UserInterfaceManagers
             case "0":
                 return _parentUI;
             default:
-                Console.WriteLine("Invalid Selection");
+   
                 return this;
         }
     }
@@ -117,8 +117,7 @@ namespace TabloidCLI.UserInterfaceManagers
         Console.Write("Url: ");
         blog.Url = Console.ReadLine();
 
-        Console.Write("Tags: ");
-            blog.Tags = new List<Tag>();
+        blog.Tags = new List<Tag>();
         
 
         _blogRepository.Insert(blog);

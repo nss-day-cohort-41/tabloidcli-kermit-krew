@@ -113,7 +113,7 @@ namespace TabloidCLI.UserInterfaceManagers
             }
             Console.Write("New Url: ");
             string url = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(title))
+            if (!string.IsNullOrWhiteSpace(url))
             {
                 postToEdit.Url = url;
             }

@@ -136,6 +136,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 Console.WriteLine("Alright. Lets do this again.");
                 Console.Clear();
                 Add();
+                return;
             }
             Console.Clear();
             _postRepository.Insert(post);
@@ -234,6 +235,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 Console.WriteLine("Alright. Lets do this again.");
                 Console.Clear();
                 Edit();
+                return;
             }
             Console.Clear();
             _postRepository.Update(postToEdit);

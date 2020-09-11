@@ -77,20 +77,44 @@ namespace TabloidCLI.UserInterfaceManagers
         }
         private void Add()
         {
+
             Console.WriteLine("New Post");
             Post post = new Post();
+            do
+            {
+                Console.Write("Title: ");
+                post.Title = Console.ReadLine();
+            } while (post.Title == "");
 
-            Console.Write("Title: ");
-            post.Title = Console.ReadLine();
+            do
+            {
+                Console.Write("Url: ");
+                post.Url = Console.ReadLine();
+            } while (post.Url == "");
+            
+            bool authorCheck = false;
+            do
+            {
+                Console.Write("Author: ");
+                post.Author = ChooseAuthor();
+                if (post.Author is Author)
+                {
+                    authorCheck = true;
+                }
+            } while (authorCheck == false);
+            bool blogChecker = false;
+            do
+            {
 
-            Console.Write("Url: ");
-            post.Url = Console.ReadLine();
-
-            Console.Write("Author: ");
-            post.Author = ChooseAuthor();
-            Console.Write("Blog: ");
-            post.Blog = ChooseBlog();
-            Console.Write("Author: ");
+                Console.Write("Blog: ");
+                post.Blog = ChooseBlog();
+                if(post.Blog is Blog)
+                {
+                    blogChecker = true;
+                }
+            }
+            while (blogChecker == false);
+            
             post.PublishDateTime = DateTime.Now;
 
 

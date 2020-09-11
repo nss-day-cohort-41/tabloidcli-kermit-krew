@@ -44,7 +44,9 @@ namespace TabloidCLI.UserInterfaceManagers
                 case "5":
                     Console.BackgroundColor = ConsoleColor.DarkYellow;
                     return this;
-                case "0": return _parentUI;
+                case "0":
+                    Console.Clear();
+                    return _parentUI;
                 default:
                     Console.WriteLine("Invalid Selection");
                     return this;

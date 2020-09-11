@@ -40,6 +40,7 @@ namespace TabloidCLI.UserInterfaceManagers
                     Console.WriteLine("Good bye");
                     return null;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Invalid Selection");
                     return this;
             }

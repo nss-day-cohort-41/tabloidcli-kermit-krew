@@ -70,10 +70,14 @@ namespace TabloidCLI.UserInterfaceManagers
         private void List()
         {
             List<Post> posts = _postRepository.GetAll();
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             foreach (Post post in posts)
             {
                 Console.WriteLine(post.Title);
             }
+            Console.WriteLine("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            Console.ReadLine();
+            Console.Clear();
         }
         private void Add()
         {
@@ -82,19 +86,22 @@ namespace TabloidCLI.UserInterfaceManagers
             Post post = new Post();
             do
             {
+                Console.Clear();
                 Console.Write("Title: ");
                 post.Title = Console.ReadLine();
             } while (post.Title == "");
-
+            
             do
             {
+                Console.Clear();
                 Console.Write("Url: ");
                 post.Url = Console.ReadLine();
             } while (post.Url == "");
             
             bool authorCheck = false;
             do
-            {
+            {   
+                Console.Clear();
                 Console.Write("Author: ");
                 post.Author = ChooseAuthor();
                 if (post.Author is Author)
@@ -102,10 +109,11 @@ namespace TabloidCLI.UserInterfaceManagers
                     authorCheck = true;
                 }
             } while (authorCheck == false);
+           
             bool blogChecker = false;
             do
             {
-
+                Console.Clear();
                 Console.Write("Blog: ");
                 post.Blog = ChooseBlog();
                 if(post.Blog is Blog)
@@ -114,10 +122,22 @@ namespace TabloidCLI.UserInterfaceManagers
                 }
             }
             while (blogChecker == false);
-            
+            Console.Clear();
             post.PublishDateTime = DateTime.Now;
-
-
+            Console.WriteLine("Is the following information correct? ");
+            Console.WriteLine($"Title: {post.Title}");
+            Console.WriteLine($"Url: {post.Url}");
+            Console.WriteLine($"Author: {post.Author.LastName}, {post.Author.FirstName}");
+            Console.WriteLine($"Blog: {post.Blog.Title}");
+            Console.WriteLine($"Yes/No");
+            string answer = Console.ReadLine().ToLower();
+            if(answer == "no")
+            {
+                Console.WriteLine("Alright. Lets do this again.");
+                Console.Clear();
+                Add();
+            }
+            Console.Clear();
             _postRepository.Insert(post);
         }
 
@@ -136,14 +156,15 @@ namespace TabloidCLI.UserInterfaceManagers
             {
                 postToEdit.Title = title;
             }
+            Console.Clear();
             Console.Write("New Url (blank to leave unchanged) ");
             string url = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(url))
             {
                 postToEdit.Url = url;
             }
-            
-            
+
+            Console.Clear();
             bool checkDate = false;
             do
             {   
@@ -162,21 +183,59 @@ namespace TabloidCLI.UserInterfaceManagers
                 
             }
             while (checkDate == false);
-            
-            Console.Write("New Author (blank to leave unchanged) ");
-            Author author = ChooseAuthor();
-            if (author != null)
+            Console.Clear();
+            bool authorChecker = false;
+            do
             {
-                postToEdit.Author = author;
-            }
-            Console.Write("New Blog (blank to leave unchanged) ");
-            Blog blog = ChooseBlog();
-            if (blog != null)
-            {
-                postToEdit.Blog = blog;
-            }
+                Console.Write("New Author (blank to leave unchanged) ");
+                Author author = ChooseAuthor();
+                if(author is Author)
+                {
+                    postToEdit.Author = author;
+                    break;
+                }
+                
+                if (author == null)
+                {
+                    break;
+                }
+            } while (authorChecker == false);
+              Console.Clear();
+           
 
 
+
+            bool blogChecker = false;
+            do
+            {
+                Console.Write("New Blog (blank to leave unchanged) ");
+                Blog blog = ChooseBlog();
+                if (blog is Blog)
+                {
+                    postToEdit.Blog = blog;
+                    blogChecker = true;
+                }
+                if (blog == null)
+                {
+                    blogChecker = true;
+                }
+
+            } while (blogChecker == false);
+
+            Console.WriteLine("Is the following information correct? ");
+            Console.WriteLine($"Title: {postToEdit.Title}");
+            Console.WriteLine($"Url: {postToEdit.Url}");
+            Console.WriteLine($"Author: {postToEdit.Author.LastName}, {postToEdit.Author.FirstName}");
+            Console.WriteLine($"Blog: {postToEdit.Blog.Title}");
+            Console.WriteLine($"Yes/No");
+            string answer = Console.ReadLine().ToLower();
+            if (answer == "no")
+            {
+                Console.WriteLine("Alright. Lets do this again.");
+                Console.Clear();
+                Edit();
+            }
+            Console.Clear();
             _postRepository.Update(postToEdit);
         }
 
@@ -187,6 +246,7 @@ namespace TabloidCLI.UserInterfaceManagers
             {
                 _postRepository.Delete(postToDelete.Id);
             }
+            Console.Clear();
         }
         private Post Choose(string prompt = null)
         {
@@ -240,11 +300,12 @@ namespace TabloidCLI.UserInterfaceManagers
             try
             {
                 int choice = int.Parse(input);
+                Console.Clear();
                 return authors[choice - 1];
             }
             catch (Exception ex)
             {
-                
+                Console.Clear();
                 return null;
             }
         }
@@ -270,11 +331,12 @@ namespace TabloidCLI.UserInterfaceManagers
             try
             {
                 int choice = int.Parse(input);
+                Console.Clear();
                 return blogs[choice - 1];
             }
             catch (Exception ex)
             {
-                
+                Console.Clear();
                 return null;
             }
         }

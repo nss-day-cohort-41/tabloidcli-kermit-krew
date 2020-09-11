@@ -102,12 +102,19 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             Console.WriteLine("New Journal Entry");
             Journal journal = new Journal();
+            do
+            {
+                Console.Write("New Journal Entry Title: ");
+                journal.Title = Console.ReadLine();
+                Console.Clear();
+            } while (journal.Title == "");
 
-            Console.Write("Title: ");
-            journal.Title = Console.ReadLine();
-
-            Console.Write("Entry: ");
-            journal.Content = Console.ReadLine();
+            do
+            {
+                Console.Write("New Journal Entry Text: ");
+                journal.Content = Console.ReadLine();
+                Console.Clear();
+            } while (journal.Content == "");
 
             journal.CreateDateTime = DateTime.Now;
 
@@ -123,13 +130,13 @@ namespace TabloidCLI.UserInterfaceManagers
             }
 
             Console.WriteLine();
-            Console.Write("New title (blank to leave unchanged: ");
+            Console.Write("New title (blank to leave unchanged): ");
             string title = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(title))
             {
                 journalToEdit.Title = title;
             }
-            Console.Write("New entry text (blank to leave unchanged: ");
+            Console.Write("New entry text (blank to leave unchanged): ");
             string content = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(content))
             {

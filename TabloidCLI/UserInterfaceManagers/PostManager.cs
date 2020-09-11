@@ -232,8 +232,8 @@ namespace TabloidCLI.UserInterfaceManagers
             string answer = Console.ReadLine().ToLower();
             if (answer == "no")
             {
-                Console.WriteLine("Alright. Lets do this again.");
                 Console.Clear();
+                Console.WriteLine("Alright. Lets do this again.");
                 Edit();
                 return;
             }

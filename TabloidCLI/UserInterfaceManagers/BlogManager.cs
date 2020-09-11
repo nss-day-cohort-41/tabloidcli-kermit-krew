@@ -59,6 +59,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 Remove();
                 return this;
             case "0":
+                Console.Clear();
                 return _parentUI;
             default:
    
@@ -110,15 +111,22 @@ namespace TabloidCLI.UserInterfaceManagers
     {
         Console.WriteLine("New Blog");
         Blog blog = new Blog();
+        
+        do
+        { 
+            Console.Write("New Blog Title: ");
+            blog.Title = Console.ReadLine();
+            Console.Clear();
+        } while (blog.Title == "");
 
-        Console.Write("Title: ");
-        blog.Title = Console.ReadLine();
-
-        Console.Write("Url: ");
-        blog.Url = Console.ReadLine();
+         do
+         {
+            Console.Write("New Blog Url: ");
+            blog.Url = Console.ReadLine();
+            Console.Clear();
+         } while (blog.Url == "");
 
         blog.Tags = new List<Tag>();
-        
 
         _blogRepository.Insert(blog);
     }
@@ -132,13 +140,13 @@ namespace TabloidCLI.UserInterfaceManagers
         }
 
         Console.WriteLine();
-        Console.Write("New first name (blank to leave unchanged: ");
+        Console.Write("New first name (blank to leave unchanged): ");
             string title = Console.ReadLine();
         if (!string.IsNullOrWhiteSpace(title))
         {
             blogToEdit.Title = title;
         }
-        Console.Write("New Url (blank to leave unchanged: ");
+        Console.Write("New Url (blank to leave unchanged): ");
         string url = Console.ReadLine();
         if (!string.IsNullOrWhiteSpace(url))
         {

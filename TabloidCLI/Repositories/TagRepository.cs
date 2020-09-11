@@ -122,6 +122,8 @@ namespace TabloidCLI
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"DELETE FROM BlogTag WHERE TagId = @id;
+                                        DELETE FROM AuthorTag WHERE TagId = @id;
+                                        DELETE FROM BlogTag WHERE TagId = @id;
                                         DELETE FROM Tag WHERE id = @id";
                     cmd.Parameters.AddWithValue("@id", id);
 

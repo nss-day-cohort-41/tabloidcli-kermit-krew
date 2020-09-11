@@ -117,15 +117,27 @@ namespace TabloidCLI.UserInterfaceManagers
             {
                 postToEdit.Url = url;
             }
-            Console.Write("New Date: ");
-            string pubDate = Console.ReadLine();
-            DateTime dateTime;
-            if (!string.IsNullOrWhiteSpace(pubDate))
-            {
-                DateTime.TryParse(pubDate, out dateTime);
-                if(dateTime != null)postToEdit.PublishDateTime = dateTime;
+            
+            
+            bool checkDate = false;
+            do
+            {   
+                Console.Write("New Date: YYYY/MM/DD");
+                string pubDate = Console.ReadLine();
+                DateTime dateTime;
+                if(string.IsNullOrWhiteSpace(pubDate))
+                {
+                    checkDate = true;
+                }
+                if(DateTime.TryParse(pubDate, out dateTime))
+                {
+                    postToEdit.PublishDateTime = dateTime;
+                    checkDate = true;
+                }
                 
             }
+            while (checkDate == false);
+            
             Console.Write("New Title: ");
             Author author = ChooseAuthor();
             if (author != null)

@@ -163,6 +163,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 if (firstName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
                 Console.Write("New first name (blank to leave unchanged): ");
                 firstName = Console.ReadLine();
+                Console.Clear();
             } while (firstName.Length > 55);
             // If a blank is entered at any time, the value in the class remains unchanged
             if (!string.IsNullOrWhiteSpace(firstName))
@@ -176,6 +177,7 @@ namespace TabloidCLI.UserInterfaceManagers
                 if (lastName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
                 Console.Write("New last name (blank to leave unchanged): ");
                 lastName = Console.ReadLine();
+                Console.Clear();
             } while (lastName.Length > 55);
             // If a blank is entered at any time, the value in the class remains unchanged
             if (!string.IsNullOrWhiteSpace(lastName))

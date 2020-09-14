@@ -217,16 +217,16 @@ namespace TabloidCLI
                                                p.Title,
                                                p.URL,
                                                p.PublishDateTime,
-                                               Author.Id as AuthorId
+                                               Author.Id as AuthorId,
                                                Author.FirstName,
                                                Author.LastName,
                                                Author.Bio,
                                                Blog.Id as BlogId,
                                                Blog.Title as BlogTitle,
-                                               Blog.URL as BlogUrl,
+                                               Blog.URL as BlogUrl
                                           FROM Post p
-                                               LEFT JOIN Author on Author.Id = Post.AuthorId
-                                               LEFT JOIN Blog on Blog.Id = Post.BlogId
+                                               LEFT JOIN Author on Author.Id = p.AuthorId
+                                               LEFT JOIN Blog on Blog.Id = p.BlogId
                                                LEFT JOIN PostTag pt on p.Id = pt.PostId
                                                LEFT JOIN Tag t on t.Id = pt.TagId
                                          WHERE t.Name LIKE @name";

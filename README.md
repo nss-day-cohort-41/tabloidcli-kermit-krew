@@ -36,7 +36,7 @@ For our POC, we will build a command line app in C# and save our data in SQL Ser
 4) Withing the submnenus for each of the managers, you may add, edit, list, and remove the items, or add and remove tags.
 
 ## Build Information
-Built on ADO .Net Core 3.1 with Visual Studio 2019 as a console application.
+Built on ADO .Net Core 3.1 with Visual Studio 2019 and C# as a console application.
 
 ## KermitKrew Team
 Anthony Johnson

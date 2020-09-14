@@ -142,9 +142,17 @@ namespace TabloidCLI.UserInterfaceManagers
         }
 
         Console.WriteLine();
-        Console.Write("New first name (blank to leave unchanged): ");
-            string title = Console.ReadLine();
-        if (!string.IsNullOrWhiteSpace(title))
+            string title = "";
+        do
+        {
+            if (title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title or hit ENTER to keep the same title."); }
+            Console.Write("New Blog Title: ");
+            title = Console.ReadLine();
+            Console.Clear();
+        } while (title.Length > 55);
+
+
+            if (!string.IsNullOrWhiteSpace(title))
         {
             blogToEdit.Title = title;
         }

@@ -85,12 +85,14 @@ namespace TabloidCLI.UserInterfaceManagers
 
             Console.WriteLine("New Post");
             Post post = new Post();
+            post.Title = "";
             do
             {
                 Console.Clear();
+                if (post.Title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title."); }
                 Console.Write("Title: ");
                 post.Title = Console.ReadLine();
-            } while (post.Title == "");
+            } while (post.Title == "" || post.Title.Length > 55);
             
             do
             {
@@ -153,7 +155,14 @@ namespace TabloidCLI.UserInterfaceManagers
             //title,url,pubdate,author,blog
             Console.WriteLine();
             Console.Write("New Title (blank to leave unchanged) ");
-            string title = Console.ReadLine();
+            string title = "";
+            do
+            {
+                if (title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title or hit ENTER to keep the same title."); }
+                Console.Write("New Post Title: ");
+                title = Console.ReadLine();
+                Console.Clear();
+            } while (title.Length > 55);
             if (!string.IsNullOrWhiteSpace(title))
             {
                 postToEdit.Title = title;

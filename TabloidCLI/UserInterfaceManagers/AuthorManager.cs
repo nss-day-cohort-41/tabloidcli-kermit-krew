@@ -43,6 +43,9 @@ namespace TabloidCLI.UserInterfaceManagers
                     List();
                     return this;
                 case "2":
+                    Console.WriteLine("This feature is coming soon!");
+                    return this;
+                    /* Future code to be implemented
                     Author author = Choose();
                     if (author == null)
                     {
@@ -52,6 +55,7 @@ namespace TabloidCLI.UserInterfaceManagers
                     {
                         return new AuthorDetailManager(this, _connectionString, author.Id);
                     }
+                    */ 
                 case "3":
                     Add();
                     return this;

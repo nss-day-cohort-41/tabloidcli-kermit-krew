@@ -41,15 +41,19 @@ namespace TabloidCLI.UserInterfaceManagers
                     List();
                     return this;
                 case "2":
-                    Post post = Choose();
-                    if (post == null)
-                    {
-                        return this;
-                    }
-                    else
-                    {
-                        return new AuthorDetailManager(this, _connectionString, post.Id);
-                    }
+                    Console.WriteLine("This feature is coming soon!");
+                    return this;
+                /* Future code to be implemented
+                Post post = Choose();
+                if (post == null)
+                {
+                return this;
+                }
+                else
+                {
+                return new AuthorDetailManager(this, _connectionString, post.Id);
+                }
+                */
                 case "3":
                     Add();
                     return this;

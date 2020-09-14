@@ -97,9 +97,16 @@ namespace TabloidCLI.UserInterfaceManagers
 
         private void Add()
         {
-            Console.WriteLine("Let's add a Tag...");
-            Console.WriteLine("What is the Tag Name?  (ENTER to cancel)");
-            string tagName = Console.ReadLine();
+            string tagName = "";
+            do
+            {
+                if (tagName.Length > 55) Console.WriteLine("Name cannot be longer than 55 characters.");
+                Console.WriteLine("Let's add a Tag...");
+                Console.WriteLine("What is the Tag Name?  (ENTER to cancel)");
+                tagName = Console.ReadLine();
+                Console.Clear();
+            } while (tagName.Length > 55);
+
             if (tagName != "")
             {
                 Tag tag = new Tag { Name = tagName };
@@ -117,10 +124,16 @@ namespace TabloidCLI.UserInterfaceManagers
             {
                 return;
             }
-
+            
+            string name = "";
             Console.WriteLine();
-            Console.Write("New name (blank to leave unchanged: ");
-            string name = Console.ReadLine();
+            do
+            {
+                if (name.Length > 55) Console.WriteLine("Name cannot be longer than 55 characters.");
+                Console.Write("New name (blank to leave unchanged): ");
+                name = Console.ReadLine();
+                Console.Clear();
+            } while (name.Length > 55);
             if (!string.IsNullOrWhiteSpace(name))
             {
                 tagToEdit.Name = name;

@@ -113,21 +113,29 @@ namespace TabloidCLI.UserInterfaceManagers
         private void Add()
         {
                 Console.WriteLine("New Author");
-                Author author = new Author();
+                // FirstName and LastName must be insantiated for character length checks during input
+                Author author = new Author()
+                {
+                    FirstName = "",
+                    LastName = ""
+                };
 
+            // FirstName and LastName have a 55 character limit in the database
             do
-            { 
+            {
+                if (author.FirstName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
                 Console.Write("New Author First Name: ");
                 author.FirstName = Console.ReadLine();
                 Console.Clear();
-            } while (author.FirstName == "");
+            } while (author.FirstName == "" | author.FirstName.Length > 55);
 
             do
             {
+                if (author.LastName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
                 Console.Write("New Author Last Name: ");
                 author.LastName = Console.ReadLine();
                 Console.Clear();
-            } while (author.LastName == "");
+            } while (author.LastName == "" | author.LastName.Length > 55);
 
             do
             {
@@ -147,19 +155,36 @@ namespace TabloidCLI.UserInterfaceManagers
                 return;
             }
 
+            // FirstName and LastName have a 55 character limit in the database
             Console.WriteLine();
-            Console.Write("New first name (blank to leave unchanged): ");
-            string firstName = Console.ReadLine();
+            string firstName = "";
+            do
+            {
+                if (firstName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
+                Console.Write("New first name (blank to leave unchanged): ");
+                firstName = Console.ReadLine();
+                Console.Clear();
+            } while (firstName.Length > 55);
+            // If a blank is entered at any time, the value in the class remains unchanged
             if (!string.IsNullOrWhiteSpace(firstName))
             {
                 authorToEdit.FirstName = firstName;
             }
-            Console.Write("New last name (blank to leave unchanged): ");
-            string lastName = Console.ReadLine();
+
+            string lastName = "";
+            do
+            {
+                if (lastName.Length > 55) Console.WriteLine("Name cannot exceed 55 characters.");
+                Console.Write("New last name (blank to leave unchanged): ");
+                lastName = Console.ReadLine();
+                Console.Clear();
+            } while (lastName.Length > 55);
+            // If a blank is entered at any time, the value in the class remains unchanged
             if (!string.IsNullOrWhiteSpace(lastName))
             {
                 authorToEdit.LastName = lastName;
             }
+
             Console.Write("New bio (blank to leave unchanged): ");
             string bio = Console.ReadLine();
             if (!string.IsNullOrWhiteSpace(bio))

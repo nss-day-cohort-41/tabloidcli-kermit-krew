@@ -39,6 +39,6 @@ For our POC, we will build a command line app in C# and save our data in SQL Ser
 Built with MS SQL Server Express and ADO .Net Core 3.1 with Visual Studio 2019/C# as a console application.
 
 ## KermitKrew Team
-Anthony Johnson
-David Larsen
-David Bruce
+1. Anthony Johnson
+2. David Larsen
+3. David Bruce

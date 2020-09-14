@@ -41,7 +41,10 @@ namespace TabloidCLI.UserInterfaceManagers
                     View();
                     return this;
                 case "2":
+                    Console.WriteLine("This feature is coming soon!");
+                    /* Future code to be implemented
                     ViewBlogPosts();
+                    */
                     return this;
                 case "3":
                     AddTag();

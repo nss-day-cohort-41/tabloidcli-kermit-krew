@@ -111,13 +111,15 @@ namespace TabloidCLI.UserInterfaceManagers
     {
         Console.WriteLine("New Blog");
         Blog blog = new Blog();
+            blog.Title = "";
         
         do
-        { 
+        {
+            if (blog.Title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title."); }
             Console.Write("New Blog Title: ");
             blog.Title = Console.ReadLine();
             Console.Clear();
-        } while (blog.Title == "");
+        } while (blog.Title == "" || blog.Title.Length > 55 );
 
          do
          {

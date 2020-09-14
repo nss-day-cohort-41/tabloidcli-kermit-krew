@@ -102,12 +102,14 @@ namespace TabloidCLI.UserInterfaceManagers
         {
             Console.WriteLine("New Journal Entry");
             Journal journal = new Journal();
+            journal.Title = "";
             do
             {
+                if (journal.Title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title."); }
                 Console.Write("New Journal Entry Title: ");
                 journal.Title = Console.ReadLine();
                 Console.Clear();
-            } while (journal.Title == "");
+            } while (journal.Title == "" || journal.Title.Length > 55);
 
             do
             {

@@ -85,12 +85,14 @@ namespace TabloidCLI.UserInterfaceManagers
 
             Console.WriteLine("New Post");
             Post post = new Post();
+            post.Title = "";
             do
             {
                 Console.Clear();
+                if (post.Title.Length > 55) { Console.WriteLine("The maximum title length is 55 characters. Please shorten the title."); }
                 Console.Write("Title: ");
                 post.Title = Console.ReadLine();
-            } while (post.Title == "");
+            } while (post.Title == "" || post.Title.Length > 55);
             
             do
             {
